@@ -1,0 +1,22 @@
+# Dictionary of common flowers and their scientific names
+flower_dict = {
+    "rose": "Rosa",
+    "sunflower": "Helianthus annuus",
+    "tulip": "Tulipa",
+    "lily": "Lilium",
+    "marigold": "Tagetes",
+    "hibiscus": "Hibiscus rosa-sinensis",
+    "lotus": "Nelumbo nucifera",
+    "jasmine": "Jasminum",
+    "daffodil": "Narcissus",
+    "daisy": "Bellis perennis"
+}
+
+# Get user input
+flower_name = input("Enter the name of a flower: ").strip().lower()
+
+# Find and print scientific name
+if flower_name in flower_dict:
+    print(f"🌼 Scientific name of '{flower_name.capitalize()}': {flower_dict[flower_name]}")
+else:
+    print(f"❌ Sorry, I don't have the scientific name for '{flower_name}'")
