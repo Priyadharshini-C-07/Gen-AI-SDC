@@ -1,0 +1,15 @@
+# Define some common symptoms and their potential diagnoses
+symptom_to_disease = {
+    "fever": "Common Cold / Flu",
+    "headache": "Migraine / Tension Headache",
+    "stomach pain": "Gastritis / Food Poisoning",
+    "cough": "Bronchitis / Common Cold",
+    "rash": "Allergic Reaction / Skin Infection"
+}
+
+# Get the symptom input from the user
+symptom = input("Enter your symptom: ").lower()
+
+# Provide a diagnosis based on the symptom
+diagnosis = symptom_to_disease.get(symptom, "Sorry, I need more information to diagnose.")
+print("🩺 Possible Diagnosis:", diagnosis)
