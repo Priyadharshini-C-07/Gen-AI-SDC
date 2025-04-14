@@ -1,0 +1,15 @@
+import re
+
+# Skills to match in the resume
+skills = ["Python", "Java", "SQL", "Machine Learning", "Django", "React"]
+
+# Get the resume text from the user
+resume = input("Paste your resume content here:\n")
+
+# Find matching skills in the resume
+found_skills = [skill for skill in skills if re.search(rf'\b{skill}\b', resume, re.IGNORECASE)]
+
+if found_skills:
+    print("🧠 Skills detected in resume:", ", ".join(found_skills))
+else:
+    print("No matching skills detected.")
