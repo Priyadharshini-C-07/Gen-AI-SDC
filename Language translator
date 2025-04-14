@@ -1,0 +1,35 @@
+pip install googletrans==4.0.0-rc1
+
+from googletrans import Translator
+
+# Initialize the Translator
+translator = Translator()
+
+# List of language codes and their names
+languages = {
+    'en': 'English',
+    'ta': 'Tamil',
+    'hi': 'Hindi',
+    'fr': 'French',
+    'es': 'Spanish',
+    'de': 'German',
+    'zh-cn': 'Chinese (Simplified)',
+    'ja': 'Japanese',
+    'ko': 'Korean',
+    'ar': 'Arabic'
+}
+
+# Display language options
+print("Available Languages:")
+for code, lang in languages.items():
+    print(f"{code} - {lang}")
+
+# Get user input
+text = input("\nEnter the text you want to translate: ")
+target_lang = input("Enter target language code (e.g., 'ta' for Tamil): ")
+
+# Translate the text
+translation = translator.translate(text, dest=target_lang)
+
+# Show result
+print(f"\nTranslated text in {languages.get(target_lang, 'Unknown')}:\n{translation.text}")
