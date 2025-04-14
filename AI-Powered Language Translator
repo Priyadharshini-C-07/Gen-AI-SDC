@@ -1,0 +1,12 @@
+from transformers import pipeline
+
+# Load the pre-trained translation pipeline (English to French)
+translator = pipeline("translation_en_to_fr")
+
+# Get text input for translation
+text_to_translate = input("Enter text in English to translate to French: ")
+
+# Translate the text
+translated_text = translator(text_to_translate, max_length=40)[0]['translation_text']
+
+print("🗣️ Translated to French:", translated_text)
