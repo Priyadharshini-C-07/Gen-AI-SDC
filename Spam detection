@@ -1,0 +1,46 @@
+pip install pandas scikit-learn
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+
+# 1. Load sample dataset (You can use your own CSV too)
+data = {
+    'label': ['ham', 'spam', 'ham', 'ham', 'spam'],
+    'message': [
+        "Hey, are we still meeting today?",
+        "Congratulations! You won a $1000 Walmart gift card. Click here!",
+        "I'll call you later.",
+        "Can you send me the report?",
+        "Free entry in 2 a weekly contest! Text WIN to 80085"
+    ]
+}
+df = pd.DataFrame(data)
+
+# 2. Preprocess
+X = df['message']
+y = df['label']
+
+# 3. Convert text to numbers
+vectorizer = CountVectorizer()
+X_vectors = vectorizer.fit_transform(X)
+
+# 4. Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X_vectors, y, test_size=0.2, random_state=42)
+
+# 5. Train model
+model = MultinomialNB()
+model.fit(X_train, y_train)
+
+# 6. Test accuracy
+y_pred = model.predict(X_test)
+print("✅ Accuracy:", accuracy_score(y_test, y_pred))
+
+# 7. User input
+user_input = input("\nEnter a message to check if it's spam: ")
+user_input_vector = vectorizer.transform([user_input])
+prediction = model.predict(user_input_vector)[0]
+
+print("🔍 This message is:", "🚨 SPAM" if prediction == "spam" else "✅ Not Spam")
